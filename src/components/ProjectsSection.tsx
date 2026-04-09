@@ -1,4 +1,4 @@
-import { ExternalLink, Plus } from "lucide-react";
+import { ExternalLink, Github, Plus } from "lucide-react";
 import foodieHubImg from "@/assets/project-foodie-hub.jpg";
 import nyayaAiImg from "@/assets/project-nyaya-ai.jpg";
 import treeVisualizerImg from "@/assets/project-tree-visualizer.jpg";
@@ -15,6 +15,7 @@ const projects = [
       "Responsive UI with optimized database queries",
     ],
     link: "https://foodie-hub1-sv8c.onrender.com",
+    github: "https://github.com/palakchandak261/foodie-hub",
     image: foodieHubImg,
     color: "from-orange-400 to-red-500",
   },
@@ -28,6 +29,7 @@ const projects = [
       "Integrated Groq LLM API for real-time legal assistance",
       "Backend with Node.js, Express, MongoDB & JWT auth",
     ],
+    github: "https://github.com/palakchandak261/nyaya-ai",
     image: nyayaAiImg,
     color: "from-purple-400 to-pink-500",
   },
@@ -41,6 +43,7 @@ const projects = [
       "Insert, delete, search with AVL rotations & Red-Black balancing",
       "Performance comparison dashboard using Chart.js",
     ],
+    github: "https://github.com/palakchandak261/tree-visualizer",
     image: treeVisualizerImg,
     color: "from-emerald-400 to-cyan-500",
   },
@@ -78,16 +81,30 @@ const ProjectsSection = () => {
                     {project.year}
                   </span>
                 </div>
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute top-3 right-3 bg-card/90 backdrop-blur-sm p-2 rounded-full text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <ExternalLink size={14} />
-                  </a>
-                )}
+                <div className="absolute top-3 right-3 flex gap-2">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-card/90 backdrop-blur-sm p-2 rounded-full text-muted-foreground hover:text-primary transition-colors"
+                      title="View Source Code"
+                    >
+                      <Github size={14} />
+                    </a>
+                  )}
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-card/90 backdrop-blur-sm p-2 rounded-full text-muted-foreground hover:text-primary transition-colors"
+                      title="Live Demo"
+                    >
+                      <ExternalLink size={14} />
+                    </a>
+                  )}
+                </div>
               </div>
 
               <div className="p-6">
@@ -102,12 +119,36 @@ const ProjectsSection = () => {
                     </li>
                   ))}
                 </ul>
-                <div className="flex flex-wrap gap-2">
+
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.map((t) => (
                     <span key={t} className="text-xs bg-secondary text-primary font-medium px-2.5 py-1 rounded-full">
                       {t}
                     </span>
                   ))}
+                </div>
+
+                <div className="flex gap-3 pt-2 border-t border-border">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <Github size={15} /> Source Code
+                    </a>
+                  )}
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <ExternalLink size={15} /> Live Demo
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

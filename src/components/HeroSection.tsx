@@ -6,10 +6,10 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-30"
+        className="absolute inset-0 bg-cover bg-center opacity-10"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/70 to-background" />
 
       <div className="relative z-10 container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12 pt-20">
         <div className="flex-1 text-center lg:text-left">
@@ -28,7 +28,7 @@ const HeroSection = () => {
           <div className="flex flex-wrap gap-4 justify-center lg:justify-start animate-fade-up animate-fade-up-delay-4">
             <a
               href="mailto:chandakpalak78@gmail.com"
-              className="bg-gradient-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center gap-2"
+              className="bg-gradient-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg"
             >
               <Mail size={18} /> Get in Touch
             </a>
@@ -36,7 +36,7 @@ const HeroSection = () => {
               href="https://github.com/palakchandak261"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-border bg-secondary px-6 py-3 rounded-lg font-medium hover:border-primary transition-colors flex items-center gap-2"
+              className="border border-border bg-card px-6 py-3 rounded-lg font-medium hover:border-primary transition-colors flex items-center gap-2 shadow-sm"
             >
               <Github size={18} /> GitHub
             </a>
@@ -44,7 +44,7 @@ const HeroSection = () => {
               href="https://linkedin.com/in/palakchandak-44b84733a"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-border bg-secondary px-6 py-3 rounded-lg font-medium hover:border-primary transition-colors flex items-center gap-2"
+              className="border border-border bg-card px-6 py-3 rounded-lg font-medium hover:border-primary transition-colors flex items-center gap-2 shadow-sm"
             >
               <Linkedin size={18} /> LinkedIn
             </a>
@@ -58,7 +58,7 @@ const HeroSection = () => {
 
         <div className="flex-shrink-0 animate-fade-up animate-fade-up-delay-2">
           <div className="relative">
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 animate-pulse-glow">
+            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 animate-pulse-glow shadow-xl">
               <img
                 src={profileImg}
                 alt="Palak Chandak"
@@ -67,7 +67,7 @@ const HeroSection = () => {
                 height={512}
               />
             </div>
-            <div className="absolute -bottom-2 -right-2 bg-gradient-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold">
+            <div className="absolute -bottom-2 -right-2 bg-gradient-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
               CGPA 8.97
             </div>
           </div>

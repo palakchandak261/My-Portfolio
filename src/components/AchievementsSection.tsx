@@ -11,27 +11,33 @@ interface Achievement {
 const achievements: Achievement[] = [
   {
     icon: Code,
-    title: "300+ DSA Problems",
+    title: "350+ DSA Problems",
     desc: "Solved on various coding platforms",
-    certificateImg: "",
+    certificateImg: "/certificates/leetcode.png",
   },
   {
     icon: Rocket,
     title: "ISRO Hackathon 2024",
     desc: "Participated in Bharatiya Antariksh Hackathon",
-    certificateImg: "",
+    certificateImg: "/certificates/Isro.png",
   },
   {
     icon: Award,
     title: "PICT TechFiesta 2026",
     desc: "Participated in PICT TechFiesta Hackathon",
-    certificateImg: "",
+    certificateImg: "/certificates/PICT.png",
   },
   {
     icon: BookOpen,
     title: "DSA in C++ Course",
     desc: "Completed by Apna College",
-    certificateImg: "",
+    certificateImg: "/certificates/DSA.png",
+  },
+    {
+    icon: Award,
+    title: "Teeseract'26",
+    desc: "Runner Up in Tesseract'26 Inter college hackathon by VIT Pune",
+    certificateImg: "/certificates/tesseract.jpeg",
   },
 ];
 
@@ -67,18 +73,7 @@ const AchievementsSection = () => {
           ))}
         </div>
 
-        {/* Extra space for more achievements */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className="bg-card/50 border-2 border-dashed border-border rounded-xl p-8 flex flex-col items-center justify-center text-muted-foreground hover:border-primary/30 transition-colors"
-            >
-              <Plus size={28} className="mb-2 opacity-50" />
-              <p className="text-sm font-medium">Add Achievement</p>
-            </div>
-          ))}
-        </div>
+
       </div>
 
       {/* Certificate Modal */}

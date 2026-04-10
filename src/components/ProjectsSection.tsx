@@ -2,8 +2,24 @@ import { ExternalLink, Github, Plus } from "lucide-react";
 import foodieHubImg from "@/assets/project-foodie-hub.jpg";
 import nyayaAiImg from "@/assets/project-nyaya-ai.jpg";
 import treeVisualizerImg from "@/assets/project-tree-visualizer.jpg";
-
+import trafficSignalImg from "@/assets/project-traffic-signal.jpg";
+import twinForgeImg from "@/assets/project-twinForge.png";
 const projects = [
+  {
+  title: "TwinForge",
+  subtitle: "AI-Powered Digital Twin Code Optimization System",
+  year: "2026",
+  tech: ["React.js", "Node.js", "MongoDB", "AI/ML"],
+  points: [
+    "Developed a system that creates multiple digital twins of code for parallel analysis and optimization",
+    "Applied AI models to evaluate, modify, and improve code performance across different twin instances",
+    "Implemented a tournament-based approach where code variants compete to select the most efficient and error-free version",
+    "Automated selection and deployment of the best-performing optimized code",
+  ],
+  github: "https://github.com/sonali110806/TwinForge",
+  image: twinForgeImg,
+  color: "from-indigo-400 to-purple-500",
+},
   {
     title: "Foodie Hub",
     subtitle: "Online Food Ordering System",
@@ -15,7 +31,7 @@ const projects = [
       "Responsive UI with optimized database queries",
     ],
     link: "https://foodie-hub1-sv8c.onrender.com",
-    github: "https://github.com/palakchandak261/foodie-hub",
+    github: "https://github.com/palakchandak261/Foodie-Hub1",
     image: foodieHubImg,
     color: "from-orange-400 to-red-500",
   },
@@ -43,10 +59,24 @@ const projects = [
       "Insert, delete, search with AVL rotations & Red-Black balancing",
       "Performance comparison dashboard using Chart.js",
     ],
-    github: "https://github.com/palakchandak261/tree-visualizer",
+    github: "https://github.com/palakchandak261/tree-rotation-visualizer",
     image: treeVisualizerImg,
     color: "from-emerald-400 to-cyan-500",
   },
+{
+  title: "Real-Time Traffic Signal Optimizer",
+  subtitle: "Smart Adaptive Traffic Management System",
+  year: "2025",
+  tech: ["Arduino", "Embedded C", "IR Sensors", "Ultrasonic Sensors"],
+  points: [
+    "Built a real-time adaptive traffic control system using vehicle density analysis",
+    "Reduced congestion via direction-based dynamic signal allocation",
+    "Integrated IR/Ultrasonic sensors with microcontroller for real-time decision making",
+    "Implemented emergency vehicle priority system for faster clearance",
+  ],
+  image: trafficSignalImg,
+  color: "from-green-400 to-blue-500",
+}
 ];
 
 const ProjectsSection = () => {
@@ -54,7 +84,7 @@ const ProjectsSection = () => {
     <section id="projects" className="py-24">
       <div className="container mx-auto px-4">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-4">
-          Featured <span className="text-gradient">Projects</span>
+          Personal <span className="text-gradient">Projects</span>
         </h2>
         <p className="text-muted-foreground text-center max-w-xl mx-auto mb-16">
           Some of the projects I've built
@@ -153,20 +183,7 @@ const ProjectsSection = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Placeholder cards for more projects */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="bg-card/50 border-2 border-dashed border-border rounded-2xl p-12 flex flex-col items-center justify-center text-muted-foreground hover:border-primary/30 transition-colors"
-            >
-              <Plus size={32} className="mb-3 opacity-50" />
-              <p className="font-medium">More Projects Coming Soon</p>
-              <p className="text-xs mt-1">Tell me what to add here!</p>
-            </div>
-          ))}
+       
         </div>
       </div>
     </section>

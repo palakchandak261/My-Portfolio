@@ -60,7 +60,7 @@ const HeroSection = () => {
           <div className="relative">
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 animate-pulse-glow shadow-xl">
               <img
-                src={profileImg}
+                src="/image.png"
                 alt="Palak Chandak"
                 className="w-full h-full object-cover"
                 width={512}

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>(M, L) B+ Tree Visualizer</title>
+
+<style>
+
+/* 🌸 GLOBAL */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fbc2eb, #a18cd1);
+    color: #2d1b3d;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 🌟 HEADING */
+h1 {
+    font-size: 2.2rem;
+    background: linear-gradient(90deg, #ff6ec7, #7f5af0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 🧊 CONTROLS */
+.controls {
+    margin: 15px auto;
+    padding: 15px;
+    width: 80%;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* INPUT */
+input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 130px;
+    background: rgba(255,255,255,0.7);
+}
+
+/* 🔥 BUTTON */
+button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff6ec7, #7f5af0);
+    color: white;
+    font-weight: 600;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(127, 90, 240, 0.4);
+}
+
+/* 🌳 SVG */
+svg {
+    background: rgba(255,255,255,0.5);
+    border-radius: 16px;
+    margin-top: 20px;
+}
+
+/* 🔥 PINK NODES (B+ TREE USES RECTANGLES) */
+svg rect {
+    
+    fill: #ff6ec7;
+    stroke: #7f5af0;
+    stroke-width: 2;
+    rx: 10;
+    filter: drop-shadow(0 4px 10px rgba(255,110,199,0.5));
+}
+
+/* NODE TEXT */
+svg text {
+    fill: white;
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(0,0,0,0.6);
+}
+
+/* EDGES */
+line {
+    stroke: #b388ff;
+    stroke-width: 2;
+}
+
+/* ===== MODAL ===== */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+}
+
+.modal-content {
+    background: rgba(255,255,255,0.5);
+    margin: 5% auto;
+    padding: 25px;
+    width: 70%;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    text-align: left;
+}
+
+.modal-content h2 {
+    text-align: center;
+    color: #7f5af0;
+}
+
+/* TABS */
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    background: rgba(109, 104, 104, 0.474);
+    padding: 8px 15px;
+    border-radius: 10px;
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, #ff6ec7, #7f5af0);
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* CLOSE */
+.close-btn {
+    float: right;
+    font-size: 25px;
+    cursor: pointer;
+    color: #ff4da6;
+}
+
+/* SMOOTH */
+* {
+    transition: all 0.3s ease;
+}
+.search-highlight {
+    fill: #ffd700 !important;   /* 🌟 yellow */
+    stroke: #f59e0b;
+    stroke-width: 3;
+    filter: drop-shadow(0 0 8px #ffd700);
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌿 (M, L) B+ Tree Visualizer</h1>
+
+<!-- ===== Degree Controls ===== -->
+<div class="controls">
+    <label>Internal Degree (M):</label>
+    <input type="number" id="internalDegree" min="3" placeholder="Min 3">
+
+    <label>Leaf Degree (L):</label>
+    <input type="number" id="leafDegree" min="2" placeholder="Min 2">
+
+    <button onclick="createTree()">Create Tree</button>
+</div>
+
+<!-- ===== Insert Controls ===== -->
+<div class="controls">
+    <label>Value:</label>
+    <input type="number" id="value" placeholder="Enter value">
+    <button onclick="insert()">Insert</button>
+    <button onclick="searchNode()">Search</button>
+    <button onclick="deleteNode()">Delete</button>
+    <button onclick="openInfo()">📘 Learn B+ Tree</button>
+</div>
+
+<!-- ===== SVG Canvas ===== -->
+<svg id="tree" width="1200" height="600"></svg>
+
+<br><br>
+<button onclick="goBack()">⬅ Back to Main</button>
+
+<!-- ===== LEARNING MODAL ===== -->
+
+<div id="bplusInfoModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeInfo()">×</span>
+        <h2>B+ Tree Complete Guide</h2>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab(event,'basic')">Basics</button>
+            <button class="tab-btn" onclick="showTab(event,'advanced')">Advanced</button>
+            <button class="tab-btn" onclick="showTab(event,'complexity')">Complexity</button>
+            <button class="tab-btn" onclick="showTab(event,'applications')">Applications</button>
+        </div>
+
+        <div id="basic" class="tab-content active">
+            <h3>What is a B+ Tree?</h3>
+            <p>A B+ Tree is a self-balancing tree used in database indexing.</p>
+            <ul>
+                <li>All records stored in leaf nodes</li>
+                <li>Internal nodes store only keys</li>
+                <li>Leaves are linked for range queries</li>
+            </ul>
+        </div>
+
+        <div id="advanced" class="tab-content">
+            <h3>Insertion Process</h3>
+            <ul>
+                <li>Find correct leaf</li>
+                <li>Insert value in sorted order</li>
+                <li>If overflow → split leaf</li>
+                <li>Promote first key of new leaf</li>
+                <li>If internal overflow → split internal</li>
+            </ul>
+        </div>
+
+        <div id="complexity" class="tab-content">
+            <h3>Time Complexity</h3>
+            <ul>
+                <li>Search → O(log n)</li>
+                <li>Insert → O(log n)</li>
+                <li>Delete → O(log n)</li>
+                <li>Range Query → Very Efficient</li>
+            </ul>
+        </div>
+
+        <div id="applications" class="tab-content">
+            <h3>Real World Applications</h3>
+            <ul>
+                <li>Database indexing (MySQL, Oracle)</li>
+                <li>File systems</li>
+                <li>Search engines</li>
+                <li>Distributed storage systems</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<script src="bplus.js"></script>
+
+<script>
+function goBack() {
+    window.location.href = "index.html";
+}
+
+function openInfo() {
+    document.getElementById("bplusInfoModal").style.display = "block";
+}
+
+function closeInfo() {
+    document.getElementById("bplusInfoModal").style.display = "none";
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById("bplusInfoModal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+
+function showTab(event, tabId) {
+    const tabs = document.querySelectorAll(".tab-content");
+    const buttons = document.querySelectorAll(".tab-btn");
+
+    tabs.forEach(tab => tab.classList.remove("active"));
+    buttons.forEach(btn => btn.classList.remove("active"));
+
+    document.getElementById(tabId).classList.add("active");
+    event.target.classList.add("active");
+}
+</script>
+
+</body>
+</html>

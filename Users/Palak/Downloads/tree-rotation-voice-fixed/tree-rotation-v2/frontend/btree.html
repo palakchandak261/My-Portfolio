@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>B-Tree Visualizer</title>
+
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* 🌸 GLOBAL */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fbc2eb, #a18cd1);
+            color: #2d1b3d;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* 🌟 HEADING */
+        h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #ff6ec7, #7f5af0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 🧊 CONTROLS */
+        .controls {
+            margin: 15px auto;
+            padding: 15px;
+            width: 80%;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.4);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* INPUT */
+        input {
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            width: 150px;
+            background: rgba(255,255,255,0.7);
+        }
+
+        /* 🔥 BUTTON */
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #ff6ec7, #7f5af0);
+            color: white;
+            font-weight: 600;
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(127, 90, 240, 0.4);
+        }
+
+        /* 🌳 SVG */
+        svg {
+            background: rgba(255,255,255,0.5);
+            border-radius: 16px;
+            margin-top: 20px;
+        }
+
+        /* NODE TEXT */
+        svg text {
+            fill: white;
+            font-weight: bold;
+            text-shadow: 0 0 6px rgba(0,0,0,0.6);
+        }
+
+        /* EDGES */
+        line {
+            stroke: #b388ff;
+            stroke-width: 2;
+        }
+
+        /* ===== ANIMATION ===== */
+        @keyframes pulse {
+            0% { fill: #ff6ec7; }
+            50% { fill: #ffd700; }
+            100% { fill: #ff6ec7; }
+        }
+
+        .split-highlight {
+            animation: pulse 0.6s ease-in-out 2;
+        }
+
+        /* ===== MODAL ===== */
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255,255,255,0.2);
+            backdrop-filter: blur(15px);
+        }
+
+        .modal-content {
+            background: rgba(255,255,255,0.5);
+            margin: 5% auto;
+            padding: 25px;
+            width: 70%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            text-align: left;
+        }
+
+        .modal-content h2 {
+            text-align: center;
+            color: #7f5af0;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            background: rgba(164, 160, 160, 0.69);
+            padding: 8px 15px;
+            border-radius: 10px;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #ff6ec7, #7f5af0);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* CLOSE */
+        .close-btn {
+            float: right;
+            font-size: 25px;
+            cursor: pointer;
+            color: #ff4da6;
+        }
+
+        svg rect {
+  stroke: #7f5af0;
+  stroke-width: 2;
+}
+
+        svg rect.node-normal {
+  fill: #ff6ec7;
+}
+
+        svg rect.node-search {
+  fill: #FFD700;
+  stroke: #b8860b;
+  stroke-width: 3;
+  filter: drop-shadow(0 0 6px #FFD700);
+}
+
+    </style>
+</head>
+
+<body>
+
+<h1>🌳 B-Tree Visualizer</h1>
+
+<div class="controls">
+    <label>Order (m):</label>
+    <input type="number" id="order" min="3" placeholder="Enter order">
+    <button onclick="createTree()">Create Tree</button>
+</div>
+
+<div class="controls">
+    <label>Value:</label>
+    <input type="number" id="value" placeholder="Enter value">
+    <button onclick="insert()">Insert</button>
+    <button onclick="searchNode()">Search</button>
+    <button onclick="deleteNode()">Delete</button>
+    <button onclick="openInfo()">📘 Learn B-Tree</button>
+</div>
+
+<svg id="tree" width="1200" height="600" style="height: 400px;"></svg>
+
+<br><br>
+<button onclick="goBack()">⬅ Back</button>
+
+<!-- MODAL -->
+<div id="btreeInfoModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeInfo()">×</span>
+        <h2>B-Tree Guide</h2>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('basic')">Basics</button>
+            <button class="tab-btn" onclick="showTab('advanced')">Advanced</button>
+            <button class="tab-btn" onclick="showTab('complexity')">Complexity</button>
+            <button class="tab-btn" onclick="showTab('applications')">Applications</button>
+        </div>
+
+        <div id="basic" class="tab-content active">
+            <p>B-Tree is a self-balancing multi-way search tree.</p>
+        </div>
+
+        <div id="advanced" class="tab-content">
+            <p>Handles insertion using split and deletion using merge/borrow.</p>
+        </div>
+
+        <div id="complexity" class="tab-content">
+            <p>All operations are O(log n)</p>
+        </div>
+
+        <div id="applications" class="tab-content">
+            <p>Used in DBMS, File Systems, Indexing</p>
+        </div>
+
+    </div>
+</div>
+
+<script src="btree.js"></script>
+
+<script>
+function goBack() {
+    window.location.href = "index.html";
+}
+
+function openInfo() {
+    document.getElementById("btreeInfoModal").style.display = "block";
+}
+
+function closeInfo() {
+    document.getElementById("btreeInfoModal").style.display = "none";
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById("btreeInfoModal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+
+function showTab(tabId) {
+    const tabs = document.querySelectorAll(".tab-content");
+    const buttons = document.querySelectorAll(".tab-btn");
+
+    tabs.forEach(tab => tab.classList.remove("active"));
+    buttons.forEach(btn => btn.classList.remove("active"));
+
+    document.getElementById(tabId).classList.add("active");
+    event.target.classList.add("active");
+}
+</script>
+
+</body>
+</html>

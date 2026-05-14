@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Tree Rotation Visualizer</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+<h1>Tree Rotation Visualizer (BST vs AVL vs Red Black)</h1>
+
+<div class="controls">
+  <input type="number" id="value" placeholder="Enter value" />
+
+  <button type="button" onclick="insert()">Insert</button>
+  <button type="button" onclick="deleteNode()">Delete</button>
+  <button type="button" onclick="searchNode()">Search</button>
+  <button type="button" onclick="resetTrees()">Reset</button>
+  <div style="margin-top:10px;">
+    🔊 Voice:
+    <button onclick="toggleVoice()">ON / OFF</button>
+
+    Speed:
+    <input type="range" min="0.5" max="2" step="0.1" value="1"
+           onchange="setVoiceRate(this.value)">
+
+    Pitch:
+    <input type="range" min="0.5" max="2" step="0.1" value="1"
+           onchange="setVoicePitch(this.value)">
+</div>
+</div>
+<div id="avlRotationInfo" class="rotation-badge"></div>
+<div id="rbRotationInfo" class="rotation-badge"></div>
+
+<div class="extra-menu" style="margin-bottom: 50px;">
+    <button type="button" onclick="toggleMenu()">More Trees ▾</button>
+
+    <div id="treeOptions" class="dropdown">
+        <button type="button" onclick="openTree('btree.html')">B-Tree</button>
+        <button type="button" onclick="openTree('bplustree.html')">B+ Tree</button>
+    </div>
+</div>
+
+<div class="trees" style="margin-top: -40px;">
+   
+  <div class="tree-section">
+    <h2>BST</h2>
+    <svg id="bstTree"></svg>
+    <button type="button" onclick="showInfo('bst')">View Info</button>
+  </div>
+
+  <div class="tree-section">
+    <h2>AVL</h2>
+    <svg id="avlTree"></svg>
+    <button type="button" onclick="showInfo('avl')">View Info</button>
+  </div>
+
+  <div class="tree-section">
+    <h2>Red Black</h2>
+    <svg id="rbTree"></svg>
+    <button type="button" onclick="showInfo('rb')">View Info</button>
+  </div>
+
+</div>
+<div id="complexityInfo" style="
+    margin-top:20px;
+    padding:15px;
+    background:#0f172a;
+    color:white;
+    border-radius:10px;
+    display:none;">
+</div>
+
+
+<!-- Info Panel -->
+<div id="infoPanel" class="info-panel"></div>
+
+<div class="steps" style="margin-top: -80px;">
+  <!-- ✅ FIXED: Added type="button" -->
+  <button type="button" onclick="prevStep()">◀ Prev</button>
+  <span id="stepInfo">Step 0</span>
+  <button type="button" onclick="nextStep()">Next ▶</button>
+</div>
+
+<div id="compareSection" style="display:none; margin-top:20px;">
+    <h2 style="color:#8c14b8;">🔍 Visual Comparison</h2>
+
+    <div style="display:flex; justify-content:space-around;">
+        
+        <div style="margin-right: 10px;">
+            <h3>⬅️ Before</h3>
+            <svg id="beforeAVL" width="370" height="300"></svg>
+            <svg id="beforeRB" width="370" height="300"></svg>
+        </div>
+
+        <div style="margin-left: 10px;">
+            <h3>➡️ After</h3>
+            <svg id="afterAVL" width="370" height="300"></svg>
+            <svg id="afterRB" width="370" height="300"></svg>
+        </div>
+
+    </div>
+</div>
+<button onclick="toggleComparison(event)">🔍 Show Comparison</button>
+
+<div id="compareSection" style="display:none; margin-top:20px;"></div>
+    <button type="button" onclick="toggleStatsPanel()">
+        📊 Show Statistical Comparison
+    </button>
+</div>
+
+<div id="statsContainer" style="width:80%; margin:30px auto; display:none;">
+    <canvas id="statsChart"></canvas>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="script.js"></script>
+</body>
+</html>

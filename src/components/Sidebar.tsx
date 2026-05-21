@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Github, Linkedin, Mail, MapPin, User, Wrench, FolderOpen, Trophy, GraduationCap, Phone, X } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, User, Wrench, FolderOpen, Trophy, GraduationCap, Phone, X, Download } from "lucide-react";
 
 const roles = [
   "Full Stack Developer",
@@ -194,13 +194,21 @@ const Sidebar = ({ open, onClose }: SidebarProps) => {
           </ul>
         </nav>
 
-        {/* ── Bottom stat ── */}
-        <div className="px-4 pb-6">
+        {/* ── Bottom stat + Resume ── */}
+        <div className="px-4 pb-6 space-y-3">
           <div className="glass border border-border rounded-xl p-4 text-center">
             <div className="font-display text-2xl font-bold stat-number">8.97</div>
             <div className="text-xs text-muted-foreground mt-0.5">CGPA · VIT Pune</div>
           </div>
-          <p className="text-center text-xs text-muted-foreground mt-3 opacity-60">
+          {/* Resume download — prominent in sidebar */}
+          <a
+            href="/resume.pdf"
+            download="Palak_Chandak_Resume.pdf"
+            className="w-full btn-shimmer text-white py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 shadow-lg hover:-translate-y-0.5 transition-transform duration-200"
+          >
+            <Download size={15} /> Download Resume
+          </a>
+          <p className="text-center text-xs text-muted-foreground opacity-60">
             © 2026 Palak Chandak
           </p>
         </div>

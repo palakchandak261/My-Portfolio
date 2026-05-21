@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
 /**
- * Navbar is only shown on the /projects page (and other non-index pages).
+ * Navbar is only shown on the /projects page.
  * On the index page, the Sidebar handles navigation.
  * On mobile for the index page, the top bar is rendered inline in Index.tsx.
  */

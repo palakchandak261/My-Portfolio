@@ -5,13 +5,10 @@ const Footer = () => (
     <div className="absolute inset-0 dot-grid opacity-10 pointer-events-none" />
     <div className="container mx-auto px-4 py-6 relative z-10">
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-        {/* Copyright */}
         <p className="text-xs text-muted-foreground flex items-center gap-1.5">
           © 2026 Palak Chandak — Built with{" "}
           <Heart size={11} className="fill-accent text-accent" /> in Pune
         </p>
-
-        {/* Social links */}
         <div className="flex items-center gap-2">
           {[
             { href: "https://github.com/palakchandak261", icon: Github, label: "GitHub" },

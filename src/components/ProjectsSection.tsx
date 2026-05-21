@@ -2,32 +2,16 @@ import { useState } from "react";
 import { ExternalLink, Github, ArrowRight, Star, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 
-// Project image placeholder component
 const ProjectImage = ({
-  gradient,
-  icon,
-  title,
-  src,
+  gradient, icon, title, src,
 }: {
-  gradient: string;
-  icon: string;
-  title: string;
-  src?: string;
+  gradient: string; icon: string; title: string; src?: string;
 }) => {
   if (src) {
-    return (
-      <img
-        src={src}
-        alt={title}
-        className="w-full h-full object-cover"
-        loading="lazy"
-      />
-    );
+    return <img src={src} alt={title} className="w-full h-full object-cover" loading="lazy" />;
   }
   return (
-    <div
-      className={`w-full h-full bg-gradient-to-br ${gradient} flex flex-col items-center justify-center relative overflow-hidden`}
-    >
+    <div className={`w-full h-full bg-gradient-to-br ${gradient} flex flex-col items-center justify-center relative overflow-hidden`}>
       <div className="absolute top-0 left-0 right-0 h-7 bg-black/30 flex items-center px-3 gap-1.5">
         <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
         <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
@@ -55,8 +39,7 @@ const featuredProjects = [
     year: "2026",
     category: "AI / Full-Stack",
     tech: ["React.js", "Flask", "Python", "PostgreSQL", "Docker", "WebSocket"],
-    description:
-      "Zero-risk autonomous IT system that tests every fix on a shadow digital twin before touching production. AI-powered anomaly detection, tournament-based fix selection, and confidence-score deployment gating.",
+    description: "Zero-risk autonomous IT system that tests every fix on a shadow digital twin before touching production. AI-powered anomaly detection, tournament-based fix selection, and confidence-score deployment gating.",
     points: [
       "Shadow digital twins for zero-risk autonomous testing before production deployment",
       "AI anomaly detection, root cause analysis, and tournament-based fix selection",
@@ -68,6 +51,7 @@ const featuredProjects = [
     icon: "🤖",
     featured: true,
     rating: 5,
+    link: undefined as string | undefined,
   },
   {
     id: "pocket-court",
@@ -76,8 +60,7 @@ const featuredProjects = [
     year: "2026",
     category: "Mobile / AI",
     tech: ["Flutter", "Node.js", "MongoDB", "Gemini AI", "JWT"],
-    description:
-      "Full-stack mobile app with 101 Indian laws across 12 categories, AI legal assistant powered by Google Gemini 2.0 Flash, emergency SOS with 6 helplines, and offline bookmark system.",
+    description: "Full-stack mobile app with 101 Indian laws across 12 categories, AI legal assistant powered by Google Gemini 2.0 Flash, emergency SOS with 6 helplines, and offline bookmark system.",
     points: [
       "101 Indian laws across 12 categories with AI assistant in Hindi & English",
       "Emergency SOS with tap-to-call for Women (181), Cyber Crime (1930), Police (100)",
@@ -89,6 +72,7 @@ const featuredProjects = [
     icon: "⚖️",
     featured: true,
     rating: 5,
+    link: undefined as string | undefined,
   },
   {
     id: "contradiction-ledger",
@@ -97,8 +81,7 @@ const featuredProjects = [
     year: "2026",
     category: "AI / NLP",
     tech: ["Python", "FastAPI", "DeBERTa", "MiniLM", "Docker", "SHA-256"],
-    description:
-      "Upload any PDF, DOCX, or TXT — the system detects 7 types of contradictions using NLI transformers, scores semantic similarity, shows word-level diffs, and records every analysis on a SHA-256 blockchain.",
+    description: "Upload any PDF, DOCX, or TXT — the system detects 7 types of contradictions using NLI transformers, scores semantic similarity, shows word-level diffs, and records every analysis on a SHA-256 blockchain.",
     points: [
       "NLI contradiction detection using CrossEncoder nli-deberta-v3-base transformer",
       "7 contradiction types: Negation, Numeric, Temporal, Semantic, Logical, Entity",
@@ -119,8 +102,7 @@ const featuredProjects = [
     year: "2025",
     category: "Full-Stack Web",
     tech: ["Node.js", "MySQL", "EJS", "Bootstrap 5", "Leaflet.js"],
-    description:
-      "Complete food ordering platform with live order tracking on a real map, animated scratch-card coupons, reward points system, and multiple payment options including UPI and QR code.",
+    description: "Complete food ordering platform with live order tracking on a real map, animated scratch-card coupons, reward points system, and multiple payment options including UPI and QR code.",
     points: [
       "Real-time order tracking with Leaflet.js — rider animating toward you over 30 seconds",
       "Animated scratch cards with 7-day expiry and reward points (1000 pts = ₹50 OFF)",
@@ -141,8 +123,7 @@ const featuredProjects = [
     year: "2026",
     category: "DSA / Visualization",
     tech: ["C++", "Node.js", "SVG", "Chart.js", "Web Speech API"],
-    description:
-      "Interactive visualizer for BST, AVL, Red-Black, B-Tree, and B+ Tree with all logic in C++, bridged to Node.js via JSON pipe. Voice narration, step-by-step replay, and statistical comparison charts.",
+    description: "Interactive visualizer for BST, AVL, Red-Black, B-Tree, and B+ Tree with all logic in C++, bridged to Node.js via JSON pipe. Voice narration, step-by-step replay, and statistical comparison charts.",
     points: [
       "All tree logic in C++ bridged to Node.js via child_process stdin/stdout JSON pipe",
       "Voice narration using Web Speech API — narrates every rotation, recoloring, split/merge",
@@ -163,8 +144,7 @@ const featuredProjects = [
     year: "2026",
     category: "Systems / Academic",
     tech: ["React 18", "TypeScript", "Tailwind CSS", "Vite"],
-    description:
-      "Browser-based OS simulator covering Paging, Interrupt Handling (SI/PI/TI), and FCFS CPU Scheduling across 3 phases with visual Gantt timeline, memory frame view, and page table.",
+    description: "Browser-based OS simulator covering Paging, Interrupt Handling (SI/PI/TI), and FCFS CPU Scheduling across 3 phases with visual Gantt timeline, memory frame view, and page table.",
     points: [
       "3 phases: basic execution → paging + interrupts → multiprogramming with FCFS scheduling",
       "Visual Gantt CPU timeline, physical memory frame view, virtual→physical page table",
@@ -176,17 +156,14 @@ const featuredProjects = [
     icon: "🖥️",
     featured: false,
     rating: 4,
+    link: undefined as string | undefined,
   },
 ];
 
 const StarRating = ({ rating }: { rating: number }) => (
   <div className="flex gap-0.5">
     {[1, 2, 3, 4, 5].map((s) => (
-      <Star
-        key={s}
-        size={11}
-        className={s <= rating ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground/30"}
-      />
+      <Star key={s} size={11} className={s <= rating ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground/30"} />
     ))}
   </div>
 );
@@ -198,12 +175,11 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="py-24 relative overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0 dot-grid opacity-15 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-primary/4 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Section label + heading */}
+        {/* Heading */}
         <div className="mb-12">
           <p className="text-xs font-semibold tracking-widest uppercase text-primary mb-2">PORTFOLIO</p>
           <div className="flex items-end gap-4 mb-4">
@@ -231,58 +207,36 @@ const ProjectsSection = () => {
                 <Star size={10} className="fill-white" /> Featured
               </div>
 
-              {/* Image area */}
               <div className="relative h-44 overflow-hidden">
-                <ProjectImage
-                  gradient={project.color}
-                  icon={project.icon}
-                  title={project.title}
-                  src={project.imgSrc}
-                />
+                <ProjectImage gradient={project.color} icon={project.icon} title={project.title} src={project.imgSrc} />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
                   {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 glass border border-white/20 text-white text-xs font-medium px-4 py-2 rounded-full hover:bg-white/20 transition-colors"
-                    >
+                    <a href={project.github} target="_blank" rel="noopener noreferrer"
+                      className="flex items-center gap-2 glass border border-white/20 text-white text-xs font-medium px-4 py-2 rounded-full hover:bg-white/20 transition-colors">
                       <Github size={13} /> Code
                     </a>
                   )}
-                  {"link" in project && project.link && (
-                    <a
-                      href={project.link as string}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 bg-primary text-white text-xs font-medium px-4 py-2 rounded-full hover:bg-primary/90 transition-colors"
-                    >
+                  {project.link && (
+                    <a href={project.link} target="_blank" rel="noopener noreferrer"
+                      className="flex items-center gap-2 bg-primary text-white text-xs font-medium px-4 py-2 rounded-full hover:bg-primary/90 transition-colors">
                       <Play size={11} className="fill-white" /> Live Demo
                     </a>
                   )}
                 </div>
-                {/* Year + rating */}
                 <div className="absolute top-3 right-3 glass border border-white/10 px-2 py-1 rounded-full">
                   <StarRating rating={project.rating} />
                 </div>
               </div>
 
-              {/* Content */}
               <div className="p-5">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xs text-primary font-medium bg-primary/10 px-2 py-0.5 rounded-md">
-                    {project.category}
-                  </span>
+                  <span className="text-xs text-primary font-medium bg-primary/10 px-2 py-0.5 rounded-md">{project.category}</span>
                   <span className="text-xs text-muted-foreground">{project.year}</span>
                 </div>
-                <h3 className="font-display text-lg font-bold mb-1 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground text-xs mb-4 leading-relaxed line-clamp-2">
-                  {project.description}
-                </p>
+                <h3 className="font-display text-lg font-bold mb-1 group-hover:text-primary transition-colors">{project.title}</h3>
+                <p className="text-muted-foreground text-xs mb-4 leading-relaxed line-clamp-2">{project.description}</p>
                 <ul className="space-y-1.5 mb-4">
                   {project.points.map((point, i) => (
                     <li key={i} className="text-xs text-muted-foreground flex gap-2">
@@ -293,9 +247,7 @@ const ProjectsSection = () => {
                 </ul>
                 <div className="flex flex-wrap gap-1.5 pt-3 border-t border-border">
                   {project.tech.map((t) => (
-                    <span key={t} className="text-xs bg-secondary text-primary font-medium px-2 py-0.5 rounded-md">
-                      {t}
-                    </span>
+                    <span key={t} className="text-xs bg-secondary text-primary font-medium px-2 py-0.5 rounded-md">{t}</span>
                   ))}
                 </div>
               </div>
@@ -313,31 +265,18 @@ const ProjectsSection = () => {
               className="group glass border border-border rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 card-shadow"
             >
               <div className="relative h-32 overflow-hidden">
-                <ProjectImage
-                  gradient={project.color}
-                  icon={project.icon}
-                  title={project.title}
-                  src={project.imgSrc}
-                />
+                <ProjectImage gradient={project.color} icon={project.icon} title={project.title} src={project.imgSrc} />
                 <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/30 to-transparent" />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
                   {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-8 h-8 glass border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-                    >
+                    <a href={project.github} target="_blank" rel="noopener noreferrer"
+                      className="w-8 h-8 glass border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors">
                       <Github size={13} />
                     </a>
                   )}
-                  {"link" in project && project.link && (
-                    <a
-                      href={project.link as string}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition-colors"
-                    >
+                  {project.link && (
+                    <a href={project.link} target="_blank" rel="noopener noreferrer"
+                      className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary/90 transition-colors">
                       <ExternalLink size={13} />
                     </a>
                   )}
@@ -348,20 +287,14 @@ const ProjectsSection = () => {
                   <span className="text-xs text-primary font-medium">{project.year}</span>
                   <StarRating rating={project.rating} />
                 </div>
-                <h3 className="font-display text-base font-bold mb-1 group-hover:text-primary transition-colors line-clamp-1">
-                  {project.title}
-                </h3>
+                <h3 className="font-display text-base font-bold mb-1 group-hover:text-primary transition-colors line-clamp-1">{project.title}</h3>
                 <p className="text-muted-foreground text-xs mb-3 line-clamp-2">{project.description}</p>
                 <div className="flex flex-wrap gap-1">
                   {project.tech.slice(0, 3).map((t) => (
-                    <span key={t} className="text-xs bg-secondary text-primary font-medium px-2 py-0.5 rounded-md">
-                      {t}
-                    </span>
+                    <span key={t} className="text-xs bg-secondary text-primary font-medium px-2 py-0.5 rounded-md">{t}</span>
                   ))}
                   {project.tech.length > 3 && (
-                    <span className="text-xs bg-secondary text-muted-foreground px-2 py-0.5 rounded-md">
-                      +{project.tech.length - 3}
-                    </span>
+                    <span className="text-xs bg-secondary text-muted-foreground px-2 py-0.5 rounded-md">+{project.tech.length - 3}</span>
                   )}
                 </div>
               </div>

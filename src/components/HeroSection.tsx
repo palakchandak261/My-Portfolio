@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Github, Linkedin, Mail, ChevronDown, Sparkles, Code2, Cpu } from "lucide-react";
+import { Github, Linkedin, Mail, ChevronDown, Code2, Cpu, Download } from "lucide-react";
 
 const roles = [
   "Full Stack Developer",
@@ -15,7 +15,6 @@ const HeroSection = () => {
   const [typing, setTyping] = useState(true);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // Typewriter effect
   useEffect(() => {
     const target = roles[roleIdx];
     let timeout: ReturnType<typeof setTimeout>;
@@ -36,7 +35,6 @@ const HeroSection = () => {
     return () => clearTimeout(timeout);
   }, [displayed, typing, roleIdx]);
 
-  // Particle canvas
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -104,10 +102,8 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      {/* Particle canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
 
-      {/* Glow blobs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/8 rounded-full blur-[120px] pointer-events-none animate-float-slow" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/6 rounded-full blur-[100px] pointer-events-none animate-float" />
       <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
@@ -115,9 +111,10 @@ const HeroSection = () => {
       <div className="relative z-10 w-full px-6 md:px-12 flex flex-col lg:flex-row items-center gap-12 lg:gap-16 pt-8 pb-16">
         {/* Left — Text */}
         <div className="flex-1 text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm text-primary mb-6 animate-fade-up border border-primary/20">
-            <Sparkles size={14} className="animate-pulse" />
-            Available for opportunities
+          {/* Specific availability badge */}
+          <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full text-sm text-green-400 mb-6 animate-fade-up border border-green-400/20">
+            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+            Open to SDE Internships · 2026
           </div>
 
           <h1 className="font-display text-5xl md:text-6xl xl:text-7xl font-bold mb-4 animate-fade-up animate-fade-up-delay-1 leading-tight">
@@ -135,28 +132,36 @@ const HeroSection = () => {
             full-stack platforms, and mobile apps that solve real problems.
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center lg:justify-start animate-fade-up animate-fade-up-delay-4">
+          <div className="flex flex-wrap gap-3 justify-center lg:justify-start animate-fade-up animate-fade-up-delay-4">
             <a
               href="mailto:chandakpalak78@gmail.com"
-              className="btn-shimmer text-white px-7 py-3.5 rounded-xl font-semibold flex items-center gap-2 shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-transform duration-200"
+              className="btn-shimmer text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-transform duration-200"
             >
-              <Mail size={18} /> Get in Touch
+              <Mail size={17} /> Get in Touch
+            </a>
+            {/* ── RESUME DOWNLOAD BUTTON ── */}
+            <a
+              href="/resume.pdf"
+              download="Palak_Chandak_Resume.pdf"
+              className="btn-shimmer text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-transform duration-200"
+            >
+              <Download size={17} /> Resume
             </a>
             <a
               href="https://github.com/palakchandak261"
               target="_blank"
               rel="noopener noreferrer"
-              className="glass border border-border px-7 py-3.5 rounded-xl font-semibold hover:border-primary/50 transition-all duration-200 flex items-center gap-2 hover:-translate-y-0.5"
+              className="glass border border-border px-6 py-3 rounded-xl font-semibold hover:border-primary/50 transition-all duration-200 flex items-center gap-2 hover:-translate-y-0.5"
             >
-              <Github size={18} /> GitHub
+              <Github size={17} /> GitHub
             </a>
             <a
               href="https://linkedin.com/in/palakchandak-44b84733a"
               target="_blank"
               rel="noopener noreferrer"
-              className="glass border border-border px-7 py-3.5 rounded-xl font-semibold hover:border-primary/50 transition-all duration-200 flex items-center gap-2 hover:-translate-y-0.5"
+              className="glass border border-border px-6 py-3 rounded-xl font-semibold hover:border-primary/50 transition-all duration-200 flex items-center gap-2 hover:-translate-y-0.5"
             >
-              <Linkedin size={18} /> LinkedIn
+              <Linkedin size={17} /> LinkedIn
             </a>
           </div>
 
@@ -178,20 +183,17 @@ const HeroSection = () => {
         {/* Right — Profile image */}
         <div className="flex-shrink-0 animate-fade-up animate-fade-up-delay-2">
           <div className="relative w-64 h-64 md:w-80 md:h-80 xl:w-96 xl:h-96">
-            {/* Outer rings */}
             <div className="absolute inset-0 rounded-full border border-primary/20 animate-spin-slow" />
             <div
               className="absolute inset-4 rounded-full border border-accent/15 animate-spin-slow"
               style={{ animationDirection: "reverse", animationDuration: "15s" }}
             />
-            {/* Orbiting dot */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div
                 className="w-3 h-3 rounded-full bg-primary animate-orbit"
                 style={{ boxShadow: "0 0 12px hsl(252 87% 67%)" }}
               />
             </div>
-            {/* Photo */}
             <div className="absolute inset-8 rounded-full overflow-hidden border-2 border-primary/30 animate-pulse-glow shadow-3d">
               <img
                 src="/professional.png"
@@ -200,7 +202,6 @@ const HeroSection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
             </div>
-            {/* Floating badges */}
             <div className="absolute -top-2 -right-2 glass border border-primary/30 px-3 py-1.5 rounded-full text-xs font-bold text-primary shadow-lg animate-float">
               CGPA 8.97 ✨
             </div>
@@ -214,7 +215,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <a
         href="#about"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"

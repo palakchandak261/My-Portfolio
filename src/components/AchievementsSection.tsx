@@ -64,12 +64,10 @@ const AchievementsSection = () => {
 
   return (
     <section id="achievements" className="py-24 relative overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0 hex-grid opacity-30 pointer-events-none" />
       <div className="absolute top-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Section label + heading */}
         <div className="mb-12">
           <p className="text-xs font-semibold tracking-widest uppercase text-primary mb-2">MILESTONES</p>
           <div className="flex items-end gap-4 mb-4">
@@ -83,7 +81,6 @@ const AchievementsSection = () => {
           </p>
         </div>
 
-        {/* Achievement cards grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {achievements.map((item) => (
             <button
@@ -91,11 +88,8 @@ const AchievementsSection = () => {
               onClick={() => setSelected(item)}
               className="group glass border border-border rounded-2xl p-6 hover:border-primary/40 transition-all duration-300 hover:-translate-y-2 card-shadow text-left cursor-pointer relative overflow-hidden"
             >
-              {/* Hover glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-
               <div className="relative z-10">
-                {/* Icon + tag row */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <item.icon size={22} className="text-white" />
@@ -104,13 +98,11 @@ const AchievementsSection = () => {
                     {item.tag}
                   </span>
                 </div>
-
                 <p className="text-xs text-muted-foreground mb-1">{item.year}</p>
                 <h3 className="font-display font-bold text-base mb-2 group-hover:text-primary transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-
                 <div className="mt-4 flex items-center gap-1.5 text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity">
                   <ImageIcon size={12} />
                   View Certificate
@@ -131,7 +123,6 @@ const AchievementsSection = () => {
             className="bg-card border border-border rounded-2xl max-w-lg w-full overflow-hidden card-shadow animate-fade-up"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal header */}
             <div className="flex items-center justify-between p-5 border-b border-border">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center">
@@ -150,8 +141,6 @@ const AchievementsSection = () => {
                 <X size={20} />
               </button>
             </div>
-
-            {/* Certificate image */}
             <div className="p-6">
               {selected.certificateImg ? (
                 <img

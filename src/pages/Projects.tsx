@@ -253,7 +253,7 @@ const allProjects = [
     year: "2026",
     category: "AI / Healthcare",
     rating: 4,
-    status: "Coming Soon",
+    status: "Live",
     statusColor: "bg-blue-400/20 text-blue-400 border-blue-400/30",
     tech: ["React.js", "Node.js", "MongoDB", "AI/ML", "NLP"],
     description:

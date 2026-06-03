@@ -44,7 +44,7 @@ const skillCategories = [
     glow: "hover:shadow-amber-500/20",
     border: "hover:border-amber-500/40",
     pillBg: "bg-amber-500/10 border-amber-500/20 text-amber-300 hover:bg-amber-500/20 hover:border-amber-400/40",
-    skills: ["Git", "GitHub", "Docker", "Prometheus", "WebSocket"],
+    skills: ["Git", "GitHub","GitLab","Docker", "Prometheus", "WebSocket"],
   },
   {
     icon: Wrench,

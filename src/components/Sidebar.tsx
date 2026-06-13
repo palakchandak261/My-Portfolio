@@ -197,7 +197,7 @@ const Sidebar = ({ open, onClose }: SidebarProps) => {
         {/* ── Bottom stat + Resume ── */}
         <div className="px-4 pb-6 space-y-3">
           <div className="glass border border-border rounded-xl p-4 text-center">
-            <div className="font-display text-2xl font-bold stat-number">8.97</div>
+            <div className="font-display text-2xl font-bold stat-number">8.82</div>
             <div className="text-xs text-muted-foreground mt-0.5">CGPA · VIT Pune</div>
           </div>
           {/* Resume download — prominent in sidebar */}

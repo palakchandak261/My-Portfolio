@@ -1,9 +1,9 @@
 import { MapPin, GraduationCap, Code2, Trophy, Rocket, Sparkles, Users } from "lucide-react";
 
 const stats = [
-  { value: "8.97", label: "CGPA",        sub: "VIT Pune",          color: "from-violet-500 to-purple-600", glow: "hover:shadow-violet-500/20" },
+  { value: "8.82", label: "CGPA",        sub: "VIT Pune",          color: "from-violet-500 to-purple-600", glow: "hover:shadow-violet-500/20" },
   { value: "9+",   label: "Projects",    sub: "Built & Deployed",  color: "from-pink-500 to-rose-600",     glow: "hover:shadow-pink-500/20"   },
-  { value: "350+", label: "DSA Solved",  sub: "LeetCode & more",   color: "from-cyan-500 to-blue-600",     glow: "hover:shadow-cyan-500/20"   },
+  { value: "400+", label: "DSA Solved",  sub: "LeetCode & more",   color: "from-cyan-500 to-blue-600",     glow: "hover:shadow-cyan-500/20"   },
   { value: "2+",   label: "Hackathons",  sub: "National level",    color: "from-amber-500 to-orange-500",  glow: "hover:shadow-amber-500/20"  },
 ];
 
@@ -88,7 +88,7 @@ const AboutSection = () => {
                 Hi! I'm a passionate full-stack developer and Computer Engineering student at{" "}
                 <span className="text-foreground font-semibold">Vishwakarma Institute of Technology, Pune</span>{" "}
                 with a CGPA of{" "}
-                <span className="text-gradient font-bold">8.97</span>. My journey in tech started
+                <span className="text-gradient font-bold">8.82</span>. My journey in tech started
                 during my college years, where I discovered my love for creating innovative solutions
                 through code.
               </p>

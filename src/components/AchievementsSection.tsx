@@ -23,7 +23,7 @@ const achievements: Achievement[] = [
   },
   {
     icon: Code,
-    title: "350+ DSA Problems",
+    title: "400+ DSA Problems",
     desc: "Solved on LeetCode and various competitive coding platforms",
     year: "2024–26",
     tag: "Coding",

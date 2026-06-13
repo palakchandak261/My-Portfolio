@@ -6,7 +6,7 @@ const education = [
     degree: "B.Tech Computer Engineering",
     institution: "Vishwakarma Institute of Technology, Pune",
     period: "2024 – Present",
-    score: "CGPA: 8.97",
+    score: "CGPA: 8.82",
     location: "Pune, Maharashtra",
     color: "from-indigo-500 to-purple-600",
   },

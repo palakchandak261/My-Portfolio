@@ -203,7 +203,7 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
             </div>
             <div className="absolute -top-2 -right-2 glass border border-primary/30 px-3 py-1.5 rounded-full text-xs font-bold text-primary shadow-lg animate-float">
-              CGPA 8.97 ✨
+              CGPA 8.82 ✨
             </div>
             <div
               className="absolute -bottom-2 -left-2 glass border border-accent/30 px-3 py-1.5 rounded-full text-xs font-bold text-accent shadow-lg animate-float"

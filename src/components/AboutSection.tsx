@@ -101,7 +101,7 @@ const AboutSection = () => {
               </p>
               <p className="text-muted-foreground leading-relaxed text-[15px]">
                 I've solved{" "}
-                <span className="text-foreground font-semibold">350+ DSA problems</span>, competed in
+                <span className="text-foreground font-semibold">400+ DSA problems</span>, competed in
                 national hackathons including ISRO's Bharatiya Antariksh Hackathon, and won{" "}
                 <span className="text-foreground font-semibold">Runner-Up at Tesseract'26</span>. I'm
                 always exploring new AI research and actively looking for opportunities where I can

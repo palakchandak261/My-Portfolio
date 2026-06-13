@@ -128,7 +128,7 @@ const HeroSection = () => {
           </div>
 
           <p className="text-muted-foreground max-w-lg mb-8 animate-fade-up animate-fade-up-delay-3 mx-auto lg:mx-0 leading-relaxed">
-            Computer Engineering student at VIT Pune with CGPA 8.97. Building AI-powered systems,
+            Computer Engineering student at VIT Pune with CGPA 8.82. Building AI-powered systems,
             full-stack platforms, and mobile apps that solve real problems.
           </p>
 

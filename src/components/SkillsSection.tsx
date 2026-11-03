@@ -70,6 +70,11 @@ const alsoFamiliarWith = [
   { name: "WebSocket",      color: "from-cyan-500 to-blue-500"     },
 ];
 
+const currentlyLearning = [
+  { name: "DevOps", color: "from-amber-500 to-orange-500" },
+  { name: "Data Science concepts", color: "from-cyan-500 to-blue-500" },
+];
+
 const SkillsSection = () => {
   return (
     <section id="skills" className="py-16 relative overflow-hidden">
@@ -121,6 +126,28 @@ const SkillsSection = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="glass border border-primary/20 rounded-2xl p-6 mb-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center shadow-lg">
+              <Sparkles size={18} className="text-white" />
+            </div>
+            <div>
+              <h3 className="font-display font-bold text-sm text-foreground">Currently Learning</h3>
+              <p className="text-xs text-muted-foreground">Growing my knowledge in these areas</p>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {currentlyLearning.map((item) => (
+              <span
+                key={item.name}
+                className={`rounded-full bg-gradient-to-r ${item.color} px-3.5 py-1.5 text-xs font-semibold text-white`}
+              >
+                {item.name}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Also familiar with */}

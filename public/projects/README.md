@@ -7,6 +7,8 @@ Drop your project screenshots here. The portfolio will automatically use them.
 | File | Project |
 |------|---------|
 | `twinforge.png` | TwinForge |
+| `wealthmap.png` | WealthMap |
+| `onionsure.png` | OnionSure |
 | `pocket-court.png` | Pocket Court App |
 | `contradiction-ledger.png` | Semantic Contradiction Ledger |
 | `foodie-hub.png` | Foodie Hub |

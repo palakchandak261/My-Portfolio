@@ -14,6 +14,14 @@ interface Achievement {
 const achievements: Achievement[] = [
   {
     icon: Award,
+    title: "ISIH 2026 Winner",
+    desc: "Winner at ISIH 2026 for an AI- and IoT-enabled onion quality assessment solution",
+    year: "2026",
+    tag: "Hackathon Winner",
+    tagColor: "bg-emerald-500/15 text-emerald-400 border-emerald-500/25",
+  },
+  {
+    icon: Award,
     title: "Tesseract'26 Runner-Up",
     desc: "Runner Up in Tesseract'26 Inter-college hackathon by VIT Pune",
     year: "2026",
@@ -23,7 +31,7 @@ const achievements: Achievement[] = [
   },
   {
     icon: Code,
-    title: "400+ DSA Problems",
+    title: "750+ DSA Problems",
     desc: "Solved on LeetCode and various competitive coding platforms",
     year: "2024–26",
     tag: "Coding",

@@ -7,7 +7,7 @@
 [![Deployed On](https://img.shields.io/badge/Deployed_On-Vercel-000000?style=for-the-badge&logo=vercel)](https://vercel.com/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-> A modern, dark-themed personal portfolio with a fixed sidebar layout, particle canvas, 3D glassmorphism cards, AI typewriter effect, and 9+ project showcases — built entirely in React + TypeScript.
+> A modern, dark-themed personal portfolio with a fixed sidebar layout, particle canvas, 3D glassmorphism cards, AI typewriter effect, and 11+ project showcases — built entirely in React + TypeScript.
 
 **[🔗 View Live →](https://myportfolio-omega-ashen.vercel.app/)**
 
@@ -55,11 +55,11 @@
 | Hero | — | Full-screen intro with photo, typewriter, CTAs, stats |
 | About | `#about` | Photo + stat cards + bio + highlights + positions of responsibility |
 | Skills | `#skills` | 6 color-coded category cards + "Also Familiar With" pill cloud |
-| Projects | `#projects` | 6 featured cards (3 large + 3 compact) + View All link |
+| Projects | `#projects` | 8 project cards (3 featured + 5 additional) + View All link |
 | Achievements | `#achievements` | 5 achievement cards with clickable certificate modal |
 | Education | `#education` | Vertical timeline with 5 academic entries |
 | Contact | `#contact` | Email/phone/location cards + Formspree contact form |
-| /projects | Route | Separate full page — all 9 projects with category filter |
+| /projects | Route | Separate full page — all 11 projects with category filter |
 
 ---
 
@@ -123,7 +123,7 @@ My-Portfolio/
 │   │
 │   ├── pages/
 │   │   ├── Index.tsx             # Main portfolio page (sidebar layout)
-│   │   ├── Projects.tsx          # All 9 projects page with category filter
+│   │   ├── Projects.tsx          # All 11 projects page with category filter
 │   │   └── NotFound.tsx          # 404 page
 │   │
 │   ├── lib/
@@ -189,6 +189,8 @@ Place project screenshots in `public/projects/` with these exact filenames:
 | Filename | Project |
 |---|---|
 | `twinforge.png` | TwinForge |
+| `wealthmap.png` | WealthMap |
+| `onionsure.png` | OnionSure |
 | `pocket-court.png` | Pocket Court |
 | `contradiction-ledger.png` | Semantic Contradiction Ledger |
 | `foodie-hub.png` | Foodie Hub |

@@ -40,7 +40,68 @@ const ProjectImage = ({
   );
 };
 
-const allProjects = [
+interface PortfolioProject {
+  id: string;
+  title: string;
+  subtitle: string;
+  year: string;
+  category: string;
+  rating: number;
+  status: string;
+  statusColor: string;
+  tech: string[];
+  description: string;
+  points: string[];
+  github?: string;
+  link?: string;
+  imgSrc?: string;
+  color: string;
+  icon: string;
+}
+
+const allProjects: PortfolioProject[] = [
+  {
+    id: "wealthmap",
+    title: "WealthMap",
+    subtitle: "Personal Finance & Risk Prediction System",
+    year: "2026",
+    category: "FinTech / Full-Stack",
+    rating: 5,
+    status: "On GitHub",
+    statusColor: "bg-cyan-400/20 text-cyan-400 border-cyan-400/30",
+    tech: ["React", "TypeScript", "Node.js", "Express", "MySQL", "Docker"],
+    description:
+      "A proactive finance platform for expense tracking, budgeting, spending forecasts, and financial risk analysis, with what-if simulations and personalized recommendations.",
+    points: [
+      "Tracks budgets, expenses, recurring obligations, and safe-to-spend limits",
+      "Forecasts spending and analyzes financial risk with anomaly detection",
+      "Supports what-if simulations, dependency graphs, and personalized recommendations",
+    ],
+    github: "https://github.com/palakchandak261/WealthMap",
+    color: "from-emerald-500 to-teal-600",
+    icon: "💰",
+  },
+  {
+    id: "onionsure",
+    title: "OnionSure",
+    subtitle: "AI + IoT Onion Quality Assessment",
+    year: "2026",
+    category: "AI / IoT",
+    rating: 5,
+    status: "ISIH 2026 Winner",
+    statusColor: "bg-emerald-400/20 text-emerald-400 border-emerald-400/30",
+    tech: ["React", "TypeScript", "Node.js", "Python", "OpenCV", "ESP32"],
+    description:
+      "A Smart India Hackathon solution for transparent onion procurement, combining computer vision, gas sensing, and environmental data to assess quality and detect early spoilage.",
+    points: [
+      "Combines YOLO-based vision detection with gas and environmental sensor data",
+      "Assesses visible defects and early-stage internal spoilage",
+      "Provides real-time dashboards and QR-verifiable quality certificates",
+    ],
+    github: "https://github.com/samarthdarak24-cpu/onion-spoilage",
+    color: "from-amber-500 to-orange-600",
+    icon: "🧅",
+  },
   {
     id: "twinforge",
     title: "TwinForge",
@@ -270,7 +331,7 @@ const allProjects = [
   },
 ];
 
-const categories = ["All", "AI / Full-Stack", "Mobile / AI", "AI / NLP", "Full-Stack Web", "DSA / Visualization", "Systems / Academic", "Frontend / MVC", "Web App", "AI / Healthcare"];
+const categories = ["All", "FinTech / Full-Stack", "AI / IoT", "AI / Full-Stack", "Mobile / AI", "AI / NLP", "Full-Stack Web", "DSA / Visualization", "Systems / Academic", "Frontend / MVC", "Web App", "AI / Healthcare"];
 
 const StarRating = ({ rating }: { rating: number }) => (
   <div className="flex gap-0.5">
@@ -315,7 +376,7 @@ const ProjectsPage = () => {
           <div className="flex flex-wrap gap-6 mt-10">
             {[
               { icon: <Layers size={16} />, label: "Total Projects", value: allProjects.length },
-              { icon: <Zap size={16} />, label: "Live Demos", value: allProjects.filter(p => (p as any).link).length },
+              { icon: <Zap size={16} />, label: "Live Demos", value: allProjects.filter((project) => project.link).length },
               { icon: <Star size={16} />, label: "5-Star Projects", value: allProjects.filter(p => p.rating === 5).length },
             ].map((stat) => (
               <div key={stat.label} className="glass border border-border rounded-2xl px-5 py-4 flex items-center gap-3">
@@ -379,8 +440,8 @@ const ProjectsPage = () => {
                         <Github size={13} /> Code
                       </a>
                     )}
-                    {(project as any).link && (
-                      <a href={(project as any).link} target="_blank" rel="noopener noreferrer"
+                    {project.link && (
+                      <a href={project.link} target="_blank" rel="noopener noreferrer"
                         className="flex items-center gap-2 bg-primary text-white text-xs font-medium px-4 py-2 rounded-full hover:bg-primary/90 transition-colors">
                         <Play size={11} className="fill-white" /> Live Demo
                       </a>

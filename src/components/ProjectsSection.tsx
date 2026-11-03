@@ -33,6 +33,46 @@ const ProjectImage = ({
 
 const featuredProjects = [
   {
+    id: "wealthmap",
+    title: "WealthMap",
+    subtitle: "Personal Finance & Risk Prediction System",
+    year: "2026",
+    category: "FinTech / Full-Stack",
+    tech: ["React", "TypeScript", "Node.js", "Express", "MySQL", "Docker"],
+    description: "A proactive finance platform for expense tracking, budgeting, spending forecasts, and financial risk analysis, with what-if simulations and personalized recommendations.",
+    points: [
+      "Tracks budgets, expenses, recurring obligations, and safe-to-spend limits",
+      "Forecasts spending and analyzes financial risk with anomaly detection",
+      "Supports what-if simulations, dependency graphs, and personalized recommendations",
+    ],
+    github: "https://github.com/palakchandak261/WealthMap",
+    color: "from-emerald-500 to-teal-600",
+    icon: "💰",
+    featured: true,
+    rating: 5,
+    link: undefined as string | undefined,
+  },
+  {
+    id: "onionsure",
+    title: "OnionSure",
+    subtitle: "AI + IoT Onion Quality Assessment",
+    year: "2026",
+    category: "AI / IoT",
+    tech: ["React", "TypeScript", "Node.js", "Python", "OpenCV", "ESP32"],
+    description: "A Smart India Hackathon solution for transparent onion procurement, combining computer vision, gas sensing, and environmental data to assess quality and detect early spoilage.",
+    points: [
+      "Combines YOLO-based vision detection with gas and environmental sensor data",
+      "Assesses visible defects and early-stage internal spoilage",
+      "Provides real-time dashboards and QR-verifiable quality certificates",
+    ],
+    github: "https://github.com/samarthdarak24-cpu/onion-spoilage",
+    color: "from-amber-500 to-orange-600",
+    icon: "🧅",
+    featured: true,
+    rating: 5,
+    link: undefined as string | undefined,
+  },
+  {
     id: "twinforge",
     title: "TwinForge",
     subtitle: "AI-Powered Digital Twin Code Optimization",
@@ -70,7 +110,7 @@ const featuredProjects = [
     imgSrc: "/projects/pocket-court.png",
     color: "from-purple-500 to-pink-600",
     icon: "⚖️",
-    featured: true,
+    featured: false,
     rating: 5,
     link: undefined as string | undefined,
   },
@@ -92,7 +132,7 @@ const featuredProjects = [
     imgSrc: "/projects/contradiction-ledger.png",
     color: "from-red-500 to-orange-500",
     icon: "🔗",
-    featured: true,
+    featured: false,
     rating: 5,
   },
   {
@@ -308,7 +348,7 @@ const ProjectsSection = () => {
             to="/projects"
             className="inline-flex items-center gap-2.5 btn-shimmer text-white px-9 py-4 rounded-xl font-semibold shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-transform duration-200"
           >
-            View All 9 Projects <ArrowRight size={18} />
+            View All 11 Projects <ArrowRight size={18} />
           </Link>
           <p className="text-xs text-muted-foreground mt-3 opacity-70">
             Including Smart Kitchen System, Red Light Override &amp; MediSure

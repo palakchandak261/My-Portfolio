@@ -169,8 +169,8 @@ const HeroSection = () => {
           <div className="flex flex-wrap gap-8 mt-10 justify-center lg:justify-start animate-fade-up animate-fade-up-delay-4">
             {[
               { value: "8.82", label: "CGPA" },
-              { value: "9+",   label: "Projects" },
-              { value: "400+", label: "DSA Solved" },
+              { value: "11+",  label: "Projects" },
+              { value: "750+", label: "DSA Solved" },
             ].map((s) => (
               <div key={s.label} className="text-center lg:text-left">
                 <div className="font-display text-2xl font-bold stat-number">{s.value}</div>

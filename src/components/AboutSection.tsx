@@ -2,8 +2,8 @@ import { MapPin, GraduationCap, Code2, Trophy, Rocket, Sparkles, Users } from "l
 
 const stats = [
   { value: "8.82", label: "CGPA",        sub: "VIT Pune",          color: "from-violet-500 to-purple-600", glow: "hover:shadow-violet-500/20" },
-  { value: "9+",   label: "Projects",    sub: "Built & Deployed",  color: "from-pink-500 to-rose-600",     glow: "hover:shadow-pink-500/20"   },
-  { value: "400+", label: "DSA Solved",  sub: "LeetCode & more",   color: "from-cyan-500 to-blue-600",     glow: "hover:shadow-cyan-500/20"   },
+  { value: "11+",  label: "Projects",    sub: "Built & Deployed",  color: "from-pink-500 to-rose-600",     glow: "hover:shadow-pink-500/20"   },
+  { value: "750+", label: "DSA Solved",  sub: "LeetCode & more",   color: "from-cyan-500 to-blue-600",     glow: "hover:shadow-cyan-500/20"   },
   { value: "2+",   label: "Hackathons",  sub: "National level",    color: "from-amber-500 to-orange-500",  glow: "hover:shadow-amber-500/20"  },
 ];
 
@@ -11,6 +11,7 @@ const highlights = [
   { icon: GraduationCap, label: "B.Tech Computer Engineering", sub: "VIT Pune · 2024–Present",      color: "from-violet-500 to-purple-600" },
   { icon: Code2,         label: "Full Stack Developer",        sub: "MERN · Flutter · Python",       color: "from-pink-500 to-rose-600"     },
   { icon: Trophy,        label: "Tesseract'26 Runner-Up",      sub: "Inter-college Hackathon",        color: "from-amber-500 to-orange-500"  },
+  { icon: Trophy,        label: "ISIH 2026 Winner",             sub: "Hackathon Achievement",         color: "from-emerald-500 to-teal-600" },
   { icon: Rocket,        label: "AI / ML Enthusiast",          sub: "NLP · Digital Twins · LLMs",    color: "from-cyan-500 to-blue-600"     },
 ];
 
@@ -101,11 +102,11 @@ const AboutSection = () => {
               </p>
               <p className="text-muted-foreground leading-relaxed text-[15px]">
                 I've solved{" "}
-                <span className="text-foreground font-semibold">400+ DSA problems</span>, competed in
+                <span className="text-foreground font-semibold">750+ DSA problems</span>, competed in
                 national hackathons including ISRO's Bharatiya Antariksh Hackathon, and won{" "}
-                <span className="text-foreground font-semibold">Runner-Up at Tesseract'26</span>. I'm
-                always exploring new AI research and actively looking for opportunities where I can
-                build things that matter.
+                <span className="text-foreground font-semibold">ISIH 2026</span> and placed runner-up
+                at Tesseract'26. I'm currently learning DevOps and Data Science concepts while
+                exploring new AI research and opportunities to build things that matter.
               </p>
             </div>
 
